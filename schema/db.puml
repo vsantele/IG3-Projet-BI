@@ -1,0 +1,106 @@
+@startuml db
+hide circle
+
+entity "Shop" as shop{
+    shop_id : number <<generated>>
+    --
+    *name_fr : text
+    *name_en : text
+    *surface : int
+}
+
+entity "Webshop" as wshop{
+    wshop_id : number <<generated>>
+    --
+    *url : text
+}
+
+entity "Employee" as emp {
+    emp_id : number <<generated>>
+    --
+    first_name : text
+    last_name : text
+    street : text
+    birth_date : date
+}
+
+entity "Commercial" as com {
+    com_id : number <<generated>>
+    --
+    first_name : text
+    last_name : text
+    street : text
+    birth_date : date
+}
+entity "Client" as clt{
+	clt_id : number <<generated>>
+    --
+    first_name : text
+    last_name : text
+    street : text
+    birth_date : date
+}
+entity "Shipvia" as shp{
+    shop_id : number <<generated>>
+    --
+    company_name : text
+    phone : text
+}
+entity "Category" as cat{
+    cat_id : number <<generated>>
+    --
+    name_fr : text
+    name_en : text
+    description : text
+    picture : image
+}
+
+entity "Product" as prod {
+    prod_id : number << generated>>
+    --
+    name_fr : text
+    name_en : text
+    quantityPerUnit : text
+    unitPrice : number
+}
+entity "Command" as cmd{
+    cmd_id : number << generated>>
+    --
+    product : number
+    price : number
+    order_date : date
+    required_date : date
+    shipped_date : date
+    freight : number
+    ship_name : text
+    is_online : bool
+}
+entity "Adress" as adr{
+    adr_id : number << generated>>
+    --
+    locality : text
+    code : number
+}
+entity "Country" as ctr{
+    ctr_id : number << generated>>
+    --
+    name_fr : text
+    name_en : text
+}
+
+shop ||--o{ emp
+shop ||--o{ com
+shop }o--|{ cat
+wshop }o--|{ cat
+cat }o--|{ prod
+prod }|--o{ cmd
+emp ||--o{ cmd
+com ||--o{ cmd
+cmd }o--|{ clt
+adr }o--|| ctr
+adr ||--o{ emp
+adr ||--o{ com
+adr ||--o{ clt
+
+
+@enduml
