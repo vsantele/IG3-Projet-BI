@@ -1,106 +1,140 @@
 @startuml db
 hide circle
 
-entity "Shop" as shop{
-    shop_id : number <<generated>>
+entity "DimShopJ" as shop{
+    shop_id : number
     --
     *name_fr : text
     *name_en : text
     *surface : int
+    is_online: bool
+    --
+    id : shop_id
 }
 
-entity "Webshop" as wshop{
-    wshop_id : number <<generated>>
+' entity "DimWebshop" as wshop{
+'     wshop_id : number <<generated>>
+'     --
+'     *url : text
+' }
+
+entity "DimEmployeeJ" as emp {
+    emp_id : number
     --
-    *url : text
+    *first_name : text
+    *last_name : text
+    *street : text
+    *birth_date : date
+    --
+    id : emp_id
 }
 
-entity "Employee" as emp {
-    emp_id : number <<generated>>
+
+entity "DimClient" as clt {
+	clt_id : number
+--
+    *company_name : text
+    contact_name : text
+    contact_title : text
+
+--
+    id : clt_id
+}
+entity "DimShipperJ" as shp{
+    ship_id : number
     --
-    first_name : text
-    last_name : text
-    street : text
-    birth_date : date
+    *company_name : text
+    *phone : text
+    --
+    id : ship_id
 }
 
-entity "Commercial" as com {
-    com_id : number <<generated>>
+entity "DimProductJ" as prod {
+    prod_id : number
     --
-    first_name : text
-    last_name : text
-    street : text
-    birth_date : date
+    *name_fr : text
+    *name_en : text
+    *quantityPerUnit : text
+    *unitPrice : number
+    *cat_id : number
+    *name_cat_fr : text
+    *name_cat_en : text
+    --
+    id : prod_id
 }
-entity "Client" as clt{
-	clt_id : number <<generated>>
+entity "FactCommand" as cmd{
+    cmd_id : number
     --
-    first_name : text
-    last_name : text
-    street : text
-    birth_date : date
+    *price : number
+    *product_key : number
+    *freight : number
+    *shipper_key : number
+    *ship_adress_key : number
+    *shop_key : number
+    *shop_adress_key : number
+    *employee_key : number
+    *client_key : number
+    *order_date_key : number
+    *required_date_key : number
+    *shipped_date_key : number
+    --
+    id : cmd_id
+    ref : product_key
+    ref : order_date_key
+    ref : required_date_key
+    ref : shipped_date_key
+    ref : shipper_key
+    ref : shop_key
 }
-entity "Shipvia" as shp{
-    shop_id : number <<generated>>
+entity "DimAdress" as adr{
+    adr_id : number
     --
-    company_name : text
-    phone : text
-}
-entity "Category" as cat{
-    cat_id : number <<generated>>
+    *locality : text
+    *code : number
+    *country_id
+    *country_name_fr : text
+    *country_name_en : text
     --
-    name_fr : text
-    name_en : text
-    description : text
-    picture : image
-}
-
-entity "Product" as prod {
-    prod_id : number << generated>>
-    --
-    name_fr : text
-    name_en : text
-    quantityPerUnit : text
-    unitPrice : number
-}
-entity "Command" as cmd{
-    cmd_id : number << generated>>
-    --
-    product : number
-    price : number
-    order_date : date
-    required_date : date
-    shipped_date : date
-    freight : number
-    ship_name : text
-    is_online : bool
-}
-entity "Adress" as adr{
-    adr_id : number << generated>>
-    --
-    locality : text
-    code : number
-}
-entity "Country" as ctr{
-    ctr_id : number << generated>>
-    --
-    name_fr : text
-    name_en : text
+    id : adr_id
 }
 
-shop ||--o{ emp
-shop ||--o{ com
-shop }o--|{ cat
-wshop }o--|{ cat
-cat }o--|{ prod
-prod }|--o{ cmd
-emp ||--o{ cmd
-com ||--o{ cmd
-cmd }o--|{ clt
-adr }o--|| ctr
-adr ||--o{ emp
-adr ||--o{ com
-adr ||--o{ clt
+entity "DimDate" as date {
+    date_key : number
+    --
+    *date : date
+    *day_of_week : number
+    *day_of_week_name_fr : text
+    *day_of_week_name_en : text
+    *week_of_year : number
+    *month : number
+    *month_name_fr : text
+    *month_name_en : text
+    *year : number
+    --
+    id : date_key
+}
 
 
-@enduml
+
+' prod <-- cmd
+' emp <-- cmd
+' clt <-- cmd
+' shp <-- cmd
+' shop <-- cmd
+' ' wshop <-- cmd
+' adr <-- cmd
+' ctr <-- cmd
+' dat <-- cmd
+
+cmd::order_date_key --> date::date_key
+cmd::required_date_key --> date::date_key
+cmd::shipped_date_key --> date::date_key
+cmd::product_key -up-> prod::prod_id
+cmd::employee_key  -left-> emp::emp_id
+cmd::shop_key -left-> shop::shop_id
+cmd::shipper_key -left-> shp::ship_id
+cmd::shop_adress_key -right-> adr::adr_id
+cmd::ship_adress_key --> adr::adr_id
+cmd::client_key -right-> clt::clt_id
+
+@endum

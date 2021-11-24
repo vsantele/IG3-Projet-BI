@@ -1,0 +1,11 @@
+Etapes et réalisations lors du travail
+
+création du schéma STAR
+    1. lecture du document : demande client_key
+    2. compréhension de la demande
+    3. création des tables indépendantes sur base des tables de la DB d'origine
+        "Foodies997"
+    4. nettoyage des tables sur bases des demandes métiers
+    5. choix des attributs et regroupements des tables secondaires
+    6. liaisons des tables de dimensions à la table des faits
+
