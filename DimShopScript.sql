@@ -1,0 +1,24 @@
+USE [ProjetETLBI]
+GO
+
+/****** Object:  Table [dbo].[DimShop]    Script Date: 14-12-21 11:44:29 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DimShop](
+	[Id] [numeric](18, 0) NOT NULL,
+	[NameFr] [nchar](15) NOT NULL,
+	[NameEn] [nchar](15) NOT NULL,
+	[Surface] [numeric](18, 0) NOT NULL,
+	[IsOnline] [tinyint] NULL,
+ CONSTRAINT [PK_DimShop] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
