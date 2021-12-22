@@ -1,101 +1,70 @@
 @startuml db
 hide circle
 
-entity "DimShopJ" as shop{
-    shop_id : number
-    --
-    *name_fr : text
-    *name_en : text
-    *surface : int
-    is_online: bool
-    --
-    id : shop_id
-}
-
-' entity "DimWebshop" as wshop{
-'     wshop_id : number <<generated>>
-'     --
-'     *url : text
-' }
 
 entity "DimEmployeeJ" as emp {
     emp_id : number
     --
-    *first_name : text
-    *last_name : text
-    *street : text
-    *birth_date : date
+    *first_name : text(10)
+    *last_name : text(15)
     --
-    id : emp_id
 }
 
 
-entity "DimClient" as clt {
-	clt_id : number
+entity "DimCustomer" as customer {
+	customer_id : text(5)
 --
-    *company_name : text
-    contact_name : text
-    contact_title : text
-
+    *company_name : text(40)
+    contact_name : text(30)
+    contact_title : text(30)
 --
-    id : clt_id
 }
 entity "DimShipperJ" as shp{
     ship_id : number
     --
-    *company_name : text
-    *phone : text
+    *company_name : text(40)
+    *phone : text(24)
     --
-    id : ship_id
 }
 
 entity "DimProductJ" as prod {
     prod_id : number
     --
-    *name_fr : text
-    *name_en : text
-    *quantityPerUnit : text
-    *unitPrice : number
+    name_fr : text(40)
+    *name_en : text(40)
+    *quantityPerUnit : text(20)
+    *unitPrice : money
     *cat_id : number
-    *name_cat_fr : text
-    *name_cat_en : text
+    name_cat_fr : text(15)
+    *name_cat_en : text(15)
     --
-    id : prod_id
 }
-entity "FactCommand" as cmd{
-    cmd_id : number
-    --
-    *price : number
+entity "FactOrder" as order{
+    *order_id : number
     *product_key : number
-    *freight : number
+    --
+    *price : money
+    *freight : money
     *shipper_key : number
     *ship_adress_key : number
-    *shop_key : number
-    *shop_adress_key : number
     *employee_key : number
-    *client_key : number
+    *customer_key : text(5)
+    *customer_address_key: number
     *order_date_key : number
     *required_date_key : number
     *shipped_date_key : number
+    *is_online : bool
     --
-    id : cmd_id
-    ref : product_key
-    ref : order_date_key
-    ref : required_date_key
-    ref : shipped_date_key
-    ref : shipper_key
-    ref : shop_key
 }
-entity "DimAdress" as adr{
+entity "DimAddress" as adr{
     adr_id : number
     --
-    *locality : text
-    *code : number
-    *country_id
-    *country_name_fr : text
-    *country_name_en : text
+    *address : text(60)
+    *city : text(15)
+    *postal_code : text(10)
+    country_name_fr : text(15)
+    *country_name_en : text(15)
     --
-    id : adr_id
 }
 
 entity "DimDate" as date {
@@ -103,38 +72,25 @@ entity "DimDate" as date {
     --
     *date : date
     *day_of_week : number
-    *day_of_week_name_fr : text
-    *day_of_week_name_en : text
+    *day_of_week_name_fr : text(15)
+    *day_of_week_name_en : text(15)
     *week_of_year : number
     *month : number
-    *month_name_fr : text
-    *month_name_en : text
+    *month_name_fr : text(15)
+    *month_name_en : text(15)
     *year : number
     --
-    id : date_key
 }
 
 
-
-' prod <-- cmd
-' emp <-- cmd
-' clt <-- cmd
-' shp <-- cmd
-' shop <-- cmd
-' ' wshop <-- cmd
-' adr <-- cmd
-' ctr <-- cmd
-' dat <-- cmd
-
-cmd::order_date_key --> date::date_key
-cmd::required_date_key --> date::date_key
-cmd::shipped_date_key --> date::date_key
-cmd::product_key -up-> prod::prod_id
-cmd::employee_key  -left-> emp::emp_id
-cmd::shop_key -left-> shop::shop_id
-cmd::shipper_key -left-> shp::ship_id
-cmd::shop_adress_key -right-> adr::adr_id
-cmd::ship_adress_key --> adr::adr_id
-cmd::client_key -right-> clt::clt_id
+order::order_date_key --> date::date_key
+order::required_date_key --> date::date_key
+order::shipped_date_key --> date::date_key
+order::product_key -up-> prod::prod_id
+order::employee_key  -left-> emp::emp_id
+order::shipper_key -left-> shp::ship_id
+order::ship_adress_key --> adr::adr_id
+order::customer_key -right-> customer::customer_id
+order::customer_address_key -right-> adr::adr_id
 
 @endum
