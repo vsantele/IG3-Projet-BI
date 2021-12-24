@@ -2,6 +2,7 @@
 hide circle
 
 
+    
 entity "DimEmployeeJ" as emp {
     emp_id : number
     --
@@ -15,8 +16,13 @@ entity "DimCustomer" as customer {
 	customer_id : text(5)
 --
     *company_name : text(40)
-    contact_name : text(30)
-    contact_title : text(30)
+    *contact_name : text(30)
+    *contact_title : text(30)
+    *city : text(15)
+    *postal_code : text(10)
+    *region : text(15)
+    *country_name_fr : text(15)
+    *country_name_en : text(15)
 --
 }
 entity "DimShipperJ" as shp{
@@ -45,6 +51,7 @@ entity "FactOrder" as order{
     --
     *price : money
     *freight : money
+    *quantity : number
     *shipper_key : number
     *ship_adress_key : number
     *employee_key : number
@@ -56,16 +63,7 @@ entity "FactOrder" as order{
     *is_online : bool
     --
 }
-entity "DimAddress" as adr{
-    adr_id : number
-    --
-    *address : text(60)
-    *city : text(15)
-    *postal_code : text(10)
-    country_name_fr : text(15)
-    *country_name_en : text(15)
-    --
-}
+
 
 entity "DimDate" as date {
     date_key : number
@@ -89,8 +87,6 @@ order::shipped_date_key --> date::date_key
 order::product_key -up-> prod::prod_id
 order::employee_key  -left-> emp::emp_id
 order::shipper_key -left-> shp::ship_id
-order::ship_adress_key --> adr::adr_id
 order::customer_key -right-> customer::customer_id
-order::customer_address_key -right-> adr::adr_id
 
 @endum

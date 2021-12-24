@@ -11,8 +11,8 @@
   DTS:LocaleID="2060"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{C40C6DEB-A7AE-4B22-AFF6-A057EE0F7785}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{9D4F975C-C693-4829-A6AC-F669E38AB841}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -393,23 +393,6 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Default Address"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{c5235690-73d3-4754-b54b-3ff44331d7f6}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Default Address"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{E88CC122-5B57-47F2-927D-9DDAAFC80359}"
-          SQLTask:SqlStatementSource="INSERT INTO DimAddress&#xA;                         (Id, Address, City, PostalCode, Region, CountryNameFr, CountryNameEn)&#xA;VALUES        (- 1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Default Customer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -418,12 +401,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Default Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E88CC122-5B57-47F2-927D-9DDAAFC80359}"
-          SQLTask:SqlStatementSource="INSERT INTO DimCustomer&#xA;                         (Id, CompanyName, ContactName, ContactTitle, Phone)&#xA;VALUES        (- 1, 'Unknown', 'Unknown', 'Unknown', 'Unknown')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO DimCustomer&#xA;                  (Id, CompanyName, ContactName, ContactTitle, Phone, City, PostalCode, CountryNameEn, CountryNameFr)&#xA;VALUES (- 1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Inconnu')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -435,7 +418,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Default Date"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -452,7 +435,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Default Employee"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -469,7 +452,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Default Product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -486,889 +469,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Default Shipper"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E88CC122-5B57-47F2-927D-9DDAAFC80359}"
           SQLTask:SqlStatementSource="INSERT INTO DimShipper&#xA;                         (Id, CompanyName, Phone)&#xA;VALUES        (- 1, 'Unknown', 'Unknown')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\DimAddress"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Tâche de flux de données"
-      DTS:DTSID="{51354418-35C6-401C-845F-CB892B058554}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DimAddress"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\DimAddress\Foodies997 Customers"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
-              description="Source OLE DB"
-              name="Foodies997 Customers"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowset">[dbo].[Customers]</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Commande SQL à exécuter."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="Variable contenant la commande SQL à exécuter."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie le mode utilisé pour accéder à la base de données."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="Mappages entre les paramètres de la commande SQL et les variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DimAddress\Foodies997 Customers.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Foodies997]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Foodies997]"
-                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB]"
-                  name="Sortie de source OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Address]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Address]"
-                      length="60"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Address]"
-                      name="Address"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[City]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]"
-                      name="City"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Region]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]"
-                      name="Region"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[PostalCode]"
-                      length="10"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]"
-                      name="PostalCode"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Country]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]"
-                      name="Country"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[CompanyName]"
-                      dataType="wstr"
-                      length="40"
-                      name="CompanyName" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[ContactName]"
-                      dataType="wstr"
-                      length="30"
-                      name="ContactName" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[ContactTitle]"
-                      dataType="wstr"
-                      length="30"
-                      name="ContactTitle" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Address]"
-                      dataType="wstr"
-                      length="60"
-                      name="Address" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[City]"
-                      dataType="wstr"
-                      length="15"
-                      name="City" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Region]"
-                      dataType="wstr"
-                      length="15"
-                      name="Region" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[PostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      name="PostalCode" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Country]"
-                      dataType="wstr"
-                      length="15"
-                      name="Country" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Phone]"
-                      dataType="wstr"
-                      length="24"
-                      name="Phone" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Fax]"
-                      dataType="wstr"
-                      length="24"
-                      name="Fax" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB]"
-                  isErrorOut="true"
-                  name="Sortie d'erreur de source OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Address]"
-                      dataType="wstr"
-                      length="60"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Address]"
-                      name="Address" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
-                      name="City" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
-                      name="Region" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[PostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[PostalCode]"
-                      name="PostalCode" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Country]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Country]"
-                      name="Country" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DimAddress\Foodies997 Orders"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
-              description="Source OLE DB"
-              name="Foodies997 Orders"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowset">[dbo].[Orders]</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Commande SQL à exécuter."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="Variable contenant la commande SQL à exécuter."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie le mode utilisé pour accéder à la base de données."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="Mappages entre les paramètres de la commande SQL et les variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DimAddress\Foodies997 Orders.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Foodies997]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Foodies997]"
-                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB]"
-                  name="Sortie de source OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCountry]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipCountry]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCountry]"
-                      name="ShipCountry"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipPostalCode]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipPostalCode]"
-                      length="10"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipPostalCode]"
-                      name="ShipPostalCode"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipRegion]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipRegion]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipRegion]"
-                      name="ShipRegion"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCity]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipCity]"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCity]"
-                      name="ShipCity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipAddress]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipAddress]"
-                      length="60"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipAddress]"
-                      name="ShipAddress"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[OrderID]"
-                      dataType="i4"
-                      name="OrderID" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
-                      dataType="i4"
-                      name="EmployeeID" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[OrderDate]"
-                      dataType="dbTimeStamp"
-                      name="OrderDate" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[RequiredDate]"
-                      dataType="dbTimeStamp"
-                      name="RequiredDate" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShippedDate]"
-                      dataType="dbTimeStamp"
-                      name="ShippedDate" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipVia]"
-                      dataType="i4"
-                      name="ShipVia" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[Freight]"
-                      dataType="cy"
-                      name="Freight" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipName]"
-                      dataType="wstr"
-                      length="40"
-                      name="ShipName" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipAddress]"
-                      dataType="wstr"
-                      length="60"
-                      name="ShipAddress" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipCity]"
-                      dataType="wstr"
-                      length="15"
-                      name="ShipCity" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipRegion]"
-                      dataType="wstr"
-                      length="15"
-                      name="ShipRegion" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipPostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      name="ShipPostalCode" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[ShipCountry]"
-                      dataType="wstr"
-                      length="15"
-                      name="ShipCountry" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].ExternalColumns[IsOnline]"
-                      dataType="bool"
-                      name="IsOnline" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB]"
-                  isErrorOut="true"
-                  name="Sortie d'erreur de source OLE DB">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipCountry]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipCountry]"
-                      name="ShipCountry" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipPostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipPostalCode]"
-                      name="ShipPostalCode" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipRegion]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipRegion]"
-                      name="ShipRegion" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipCity]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipCity]"
-                      name="ShipCity" />
-                    <outputColumn
-                      refId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipAddress]"
-                      dataType="wstr"
-                      length="60"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie d'erreur de source OLE DB].Columns[ShipAddress]"
-                      name="ShipAddress" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DimAddress\ProjetETLBi Address"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
-              description="Destination OLE DB"
-              name="ProjetETLBi Address"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowset">[dbo].[DimAddress]</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Commande SQL à exécuter."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie le mode utilisé pour accéder à la base de données."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DimAddress\ProjetETLBi Address.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ProjetETLBi]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ProjetETLBi]"
-                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB]"
-                  errorOrTruncationOperation="Insérer"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="Entrée de destination OLE DB">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].Columns[Address]"
-                      cachedDataType="wstr"
-                      cachedLength="60"
-                      cachedName="Address"
-                      externalMetadataColumnId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[Address]"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Address]" />
-                    <inputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].Columns[City]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="City"
-                      externalMetadataColumnId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[City]" />
-                    <inputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].Columns[Region]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Region"
-                      externalMetadataColumnId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Region]" />
-                    <inputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].Columns[PostalCode]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="PostalCode"
-                      externalMetadataColumnId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[PostalCode]"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[PostalCode]" />
-                    <inputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].Columns[Country]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Country"
-                      externalMetadataColumnId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameEn]"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Country]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[Id]"
-                      dataType="numeric"
-                      name="Id"
-                      precision="18" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[Address]"
-                      dataType="wstr"
-                      length="60"
-                      name="Address" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
-                      dataType="wstr"
-                      length="15"
-                      name="City" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameFr]"
-                      dataType="wstr"
-                      length="15"
-                      name="CountryNameFr" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameEn]"
-                      dataType="wstr"
-                      length="15"
-                      name="CountryNameEn" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[PostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      name="PostalCode" />
-                    <externalMetadataColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
-                      dataType="wstr"
-                      length="15"
-                      name="Region" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DimAddress\ProjetETLBi Address.Outputs[Sortie d'erreur de destination OLE DB]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Sortie d'erreur de destination OLE DB"
-                  synchronousInputId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\ProjetETLBi Address.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DimAddress\ProjetETLBi Address.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DimAddress\ProjetETLBi Address.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DimAddress\Unir tout"
-              componentClassID="Microsoft.UnionAll"
-              contactInfo="Unir tout;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
-              description="Combine des lignes de plusieurs flux de données sans effectuer de tri. Par exemple, rajoutez des lignes à un flux de données après correction des erreurs. Si le tri est important, nous recommandons l'utilisation de la transformation de fusion."
-              name="Unir tout"
-              version="1">
-              <inputs>
-                <input
-                  refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1]"
-                  name="Unir tout entrée 1">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1].Columns[ShipCountry]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ShipCountry"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCountry]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Country]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1].Columns[ShipPostalCode]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="ShipPostalCode"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipPostalCode]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[PostalCode]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1].Columns[ShipRegion]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ShipRegion"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipRegion]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Region]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1].Columns[ShipCity]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ShipCity"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipCity]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[City]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1].Columns[ShipAddress]"
-                      cachedDataType="wstr"
-                      cachedLength="60"
-                      cachedName="ShipAddress"
-                      lineageId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB].Columns[ShipAddress]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Address]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1]"
-                  hasSideEffects="true"
-                  name="Entrée Union All 1">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1].Columns[Country]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Country"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Country]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1].Columns[PostalCode]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="PostalCode"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[PostalCode]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1].Columns[Region]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Region"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Region]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1].Columns[City]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="City"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[City]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1].Columns[Address]"
-                      cachedDataType="wstr"
-                      cachedLength="60"
-                      cachedName="Address"
-                      lineageId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Address]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="ID de traçabilité de colonne de sortie"
-                          name="OutputColumnLineageID">#{Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Address]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 2]"
-                  dangling="true"
-                  hasSideEffects="true"
-                  name="Entrée Union All 2">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1]"
-                  name="Unir tout sortie 1">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Country]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Country]"
-                      name="Country" />
-                    <outputColumn
-                      refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[PostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[PostalCode]"
-                      name="PostalCode" />
-                    <outputColumn
-                      refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Region]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Region]"
-                      name="Region" />
-                    <outputColumn
-                      refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[City]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[City]"
-                      name="City" />
-                    <outputColumn
-                      refId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Address]"
-                      dataType="wstr"
-                      length="60"
-                      lineageId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1].Columns[Address]"
-                      name="Address" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DimAddress.Paths[Sortie de source OLE DB]"
-              endId="Package\DimAddress\Unir tout.Inputs[Unir tout entrée 1]"
-              name="Sortie de source OLE DB"
-              startId="Package\DimAddress\Foodies997 Orders.Outputs[Sortie de source OLE DB]" />
-            <path
-              refId="Package\DimAddress.Paths[Sortie de source OLE DB1]"
-              endId="Package\DimAddress\Unir tout.Inputs[Entrée Union All 1]"
-              name="Sortie de source OLE DB"
-              startId="Package\DimAddress\Foodies997 Customers.Outputs[Sortie de source OLE DB]" />
-            <path
-              refId="Package\DimAddress.Paths[Unir tout sortie 1]"
-              endId="Package\DimAddress\ProjetETLBi Address.Inputs[Entrée de destination OLE DB]"
-              name="Unir tout sortie 1"
-              startId="Package\DimAddress\Unir tout.Outputs[Unir tout sortie 1]" />
-          </paths>
-        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1496,6 +602,46 @@
                       lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Phone]"
                       name="Phone"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1603,6 +749,30 @@
                       length="24"
                       lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Phone]"
                       name="Phone" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie d'erreur de source OLE DB].Columns[Country]"
+                      name="Country" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1715,6 +885,34 @@
                       cachedName="CustomerID"
                       externalMetadataColumnId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Id]"
                       lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[City]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[PostalCode]"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameEn]"
+                      lineageId="Package\DimCustomer\Foodies997 Customers.Outputs[Sortie de source OLE DB].Columns[Country]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1743,6 +941,31 @@
                       dataType="wstr"
                       length="24"
                       name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameFr]"
+                      dataType="wstr"
+                      length="15"
+                      name="CountryNameFr" />
+                    <externalMetadataColumn
+                      refId="Package\DimCustomer\ProjetETLBi Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[CountryNameEn]"
+                      dataType="wstr"
+                      length="15"
+                      name="CountryNameEn" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2955,18 +2178,18 @@
                       externalMetadataColumnId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[LastName]"
                       lineageId="Package\DimEployee\Foodies997 Employees.Outputs[Sortie de source OLE DB].Columns[LastName]" />
                     <inputColumn
+                      refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[Id]"
+                      lineageId="Package\DimEployee\Foodies997 Employees.Outputs[Sortie de source OLE DB].Columns[EmployeeID]" />
+                    <inputColumn
                       refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].Columns[FirstName]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="FirstName"
                       externalMetadataColumnId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[FirstName]"
                       lineageId="Package\DimEployee\Foodies997 Employees.Outputs[Sortie de source OLE DB].Columns[FirstName]" />
-                    <inputColumn
-                      refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeID"
-                      externalMetadataColumnId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[Id]"
-                      lineageId="Package\DimEployee\Foodies997 Employees.Outputs[Sortie de source OLE DB].Columns[EmployeeID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2976,15 +2199,15 @@
                       length="20"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[FirstName]"
-                      dataType="wstr"
-                      length="10"
-                      name="FirstName" />
-                    <externalMetadataColumn
                       refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[Id]"
                       dataType="numeric"
                       name="Id"
                       precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\DimEployee\ProjetETLBi Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4029,6 +3252,22 @@ where [refTable].[CategoryID] = ?</property>
               startId="Package\DimShipper\Source OLE DB.Outputs[Sortie de source OLE DB]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tâche d'exécution de requêtes SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{15973D78-6CB0-47CC-A1CD-5D2C6B3ABAC2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tâche d'exécution de requêtes SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E88CC122-5B57-47F2-927D-9DDAAFC80359}" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5553,14 +4792,6 @@ where [refTable].[ProductID] = ?</property>
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\DimProduct" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
-      DTS:CreationName=""
-      DTS:DTSID="{CC1479CD-3170-403B-8A24-02A0542D1945}"
-      DTS:From="Package\DimAddress"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 10"
-      DTS:To="Package\Tâche de flux de données" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
       DTS:CreationName=""
       DTS:DTSID="{A8F7E265-6BF2-4D97-B71B-0C0F6CDDA39A}"
@@ -5584,14 +4815,6 @@ where [refTable].[ProductID] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\DimCustomer" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{6D91AF8A-E646-43FE-AC47-27092FEB2161}"
-      DTS:From="Package\Default Address"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\DimAddress" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
@@ -5634,67 +4857,59 @@ where [refTable].[ProductID] = ?</property>
       DTS:To="Package\Tâche de flux de données" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Default Address"
-          TopLeft="878,36" />
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Default Date"
-          TopLeft="1023,39" />
-        <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Default Customer"
           TopLeft="698,26" />
         <NodeLayout
-          Size="166,42"
+          Size="140,41.6"
+          Id="Package\Default Date"
+          TopLeft="882.259264851794,30.3333332644569" />
+        <NodeLayout
+          Size="166.4,41.6"
           Id="Package\Default Employee"
           TopLeft="375,31" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Default Product"
           TopLeft="534,34" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Default Shipper"
           TopLeft="225,54" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\DimAddress"
-          TopLeft="880,121" />
-        <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\DimCustomer"
           TopLeft="702,120" />
         <NodeLayout
-          Size="122,42"
+          Size="121.6,41.6"
           Id="Package\DimDate"
-          TopLeft="1034,124" />
+          TopLeft="893.259264851794,115.333333264457" />
         <NodeLayout
-          Size="138,42"
+          Size="137.6,41.6"
           Id="Package\DimEployee"
           TopLeft="395,123" />
         <NodeLayout
-          Size="137,42"
+          Size="136.8,41.6"
           Id="Package\DimProduct"
           TopLeft="546,120" />
         <NodeLayout
-          Size="137,42"
+          Size="136.8,41.6"
           Id="Package\DimShipper"
           TopLeft="230.666638188893,121.200001074473" />
         <NodeLayout
-          Size="205,42"
+          Size="197.6,41.6"
           Id="Package\Tâche de flux de données"
           TopLeft="602,357" />
         <EdgeLayout
@@ -5742,65 +4957,31 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="949.5,163">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-179.333333333333,194"
-              Start="0,0"
-              End="-179.333333333333,186.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,138.715311004785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,138.715311004785"
-                    Point2="0,142.715311004785"
-                    Point3="-4,142.715311004785" />
-                  <mssgle:LineSegment
-                    End="-175.333333333333,142.715311004785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-175.333333333333,142.715311004785"
-                    Point2="-179.333333333333,142.715311004785"
-                    Point3="-179.333333333333,146.715311004785" />
-                  <mssgle:LineSegment
-                    End="-179.333333333333,186.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="1095,166">
+          TopLeft="954.059264851794,156.933333264457">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-320.142857142857,191"
+              EndConnector="-190.059264851794,200.066666735543"
               Start="0,0"
-              End="-320.142857142857,183.5">
+              End="-190.059264851794,192.566666735543">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,141.403183023873" />
+                    End="0,143.07281751095" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,141.403183023873"
-                    Point2="0,145.403183023873"
-                    Point3="-4,145.403183023873" />
+                    Point1="0,143.07281751095"
+                    Point2="0,147.07281751095"
+                    Point3="-4,147.07281751095" />
                   <mssgle:LineSegment
-                    End="-316.142857142857,145.403183023873" />
+                    End="-186.059264851794,147.07281751095" />
                   <mssgle:CubicBezierSegment
-                    Point1="-316.142857142857,145.403183023873"
-                    Point2="-320.142857142857,145.403183023873"
-                    Point3="-320.142857142857,149.403183023873" />
+                    Point1="-186.059264851794,147.07281751095"
+                    Point2="-190.059264851794,147.07281751095"
+                    Point3="-190.059264851794,151.07281751095" />
                   <mssgle:LineSegment
-                    End="-320.142857142857,183.5" />
+                    End="-190.059264851794,192.566666735543" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5854,30 +5035,8 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="953,78">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="1094,81">
+          TopLeft="953.259264851794,72.3333332644569">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5899,30 +5058,30 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="299.166638188893,163.200001074473">
+          TopLeft="299.066638188893,162.800001074473">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="405.333361811107,193.799998925527"
+              EndConnector="334.019076096821,194.199998925527"
               Start="0,0"
-              End="405.333361811107,186.299998925527">
+              End="334.019076096821,186.699998925527">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,92.8999994627635" />
+                    End="0,143.721864558837" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,92.8999994627635"
-                    Point2="0,96.8999994627635"
-                    Point3="4,96.8999994627635" />
+                    Point1="0,143.721864558837"
+                    Point2="0,147.721864558837"
+                    Point3="4,147.721864558837" />
                   <mssgle:LineSegment
-                    End="401.333361811107,96.8999994627635" />
+                    End="330.019076096821,147.721864558837" />
                   <mssgle:CubicBezierSegment
-                    Point1="401.333361811107,96.8999994627635"
-                    Point2="405.333361811107,96.8999994627635"
-                    Point3="405.333361811107,100.899999462764" />
+                    Point1="330.019076096821,147.721864558837"
+                    Point2="334.019076096821,147.721864558837"
+                    Point3="334.019076096821,151.721864558837" />
                   <mssgle:LineSegment
-                    End="405.333361811107,186.299998925527" />
+                    End="334.019076096821,186.699998925527" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5933,30 +5092,30 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="464,165">
+          TopLeft="463.8,164.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="273.333333333333,192"
+              EndConnector="196.371428571429,192.4"
               Start="0,0"
-              End="273.333333333333,184.5">
+              End="196.371428571429,184.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,110.307841239109" />
+                    End="0,117.099235529669" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,110.307841239109"
-                    Point2="0,114.307841239109"
-                    Point3="4,114.307841239109" />
+                    Point1="0,117.099235529669"
+                    Point2="0,121.099235529669"
+                    Point3="4,121.099235529669" />
                   <mssgle:LineSegment
-                    End="269.333333333333,114.307841239109" />
+                    End="192.371428571429,121.099235529669" />
                   <mssgle:CubicBezierSegment
-                    Point1="269.333333333333,114.307841239109"
-                    Point2="273.333333333333,114.307841239109"
-                    Point3="273.333333333333,118.307841239109" />
+                    Point1="192.371428571429,121.099235529669"
+                    Point2="196.371428571429,121.099235529669"
+                    Point3="196.371428571429,125.099235529669" />
                   <mssgle:LineSegment
-                    End="273.333333333333,184.5" />
+                    End="196.371428571429,184.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5967,30 +5126,30 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="614.5,162">
+          TopLeft="614.4,161.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="139.25,195"
+              EndConnector="72.8571428571429,195.4"
               Start="0,0"
-              End="139.25,187.5">
+              End="72.8571428571429,187.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,124.330658105939" />
+                    End="0,100.88873020801" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,124.330658105939"
-                    Point2="0,128.330658105939"
-                    Point3="4,128.330658105939" />
+                    Point1="0,100.88873020801"
+                    Point2="0,104.88873020801"
+                    Point3="4,104.88873020801" />
                   <mssgle:LineSegment
-                    End="135.25,128.330658105939" />
+                    End="68.8571428571429,104.88873020801" />
                   <mssgle:CubicBezierSegment
-                    Point1="135.25,128.330658105939"
-                    Point2="139.25,128.330658105939"
-                    Point3="139.25,132.330658105939" />
+                    Point1="68.8571428571429,104.88873020801"
+                    Point2="72.8571428571429,104.88873020801"
+                    Point3="72.8571428571429,108.88873020801" />
                   <mssgle:LineSegment
-                    End="139.25,187.5" />
+                    End="72.8571428571429,187.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6001,30 +5160,30 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="775,162">
+          TopLeft="774.8,161.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-11.4,195"
+              EndConnector="-60.4571428571428,195.4"
               Start="0,0"
-              End="-11.4,187.5">
+              End="-60.4571428571428,187.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,132.994516792324" />
+                    End="0,100.88873020801" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,132.994516792324"
-                    Point2="0,136.994516792324"
-                    Point3="-4,136.994516792324" />
+                    Point1="0,100.88873020801"
+                    Point2="0,104.88873020801"
+                    Point3="-4,104.88873020801" />
                   <mssgle:LineSegment
-                    End="-7.39999999999998,136.994516792324" />
+                    End="-56.4571428571428,104.88873020801" />
                   <mssgle:CubicBezierSegment
-                    Point1="-7.39999999999998,136.994516792324"
-                    Point2="-11.4,136.994516792324"
-                    Point3="-11.4,140.994516792324" />
+                    Point1="-56.4571428571428,104.88873020801"
+                    Point2="-60.4571428571428,104.88873020801"
+                    Point3="-60.4571428571428,108.88873020801" />
                   <mssgle:LineSegment
-                    End="-11.4,187.5" />
+                    End="-60.4571428571428,187.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6033,175 +5192,26 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Tâche d'exécution de requêtes SQL"
+          TopLeft="1106.48143751386,99.1851859734382" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\DimAddress">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="193,42"
-          Id="Package\DimAddress\Foodies997 Customers"
-          TopLeft="483,67" />
-        <NodeLayout
-          Size="181,42"
-          Id="Package\DimAddress\ProjetETLBi Address"
-          TopLeft="457,390" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DimAddress\Foodies997 Orders"
-          TopLeft="300,66" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\DimAddress\Unir tout"
-          TopLeft="483,240" />
-        <EdgeLayout
-          Id="Package\DimAddress.Paths[Unir tout sortie 1]"
-          TopLeft="545.5,282">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,108"
-              Start="0,0"
-              End="0,100.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,100.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimAddress.Paths[Sortie de source OLE DB]"
-          TopLeft="386.5,108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="157,132"
-              Start="0,0"
-              End="157,124.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,62"
-                    Point2="0,66"
-                    Point3="4,66" />
-                  <mssgle:LineSegment
-                    End="153,66" />
-                  <mssgle:CubicBezierSegment
-                    Point1="153,66"
-                    Point2="157,66"
-                    Point3="157,70" />
-                  <mssgle:LineSegment
-                    End="157,124.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimAddress.Paths[Sortie de source OLE DB1]"
-          TopLeft="579.5,109">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-17.1666666666666,131"
-              Start="0,0"
-              End="-17.1666666666666,123.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5742251223491" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,73.5742251223491"
-                    Point2="0,77.5742251223491"
-                    Point3="-4,77.5742251223491" />
-                  <mssgle:LineSegment
-                    End="-13.1666666666666,77.5742251223491" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-13.1666666666666,77.5742251223491"
-                    Point2="-17.1666666666666,77.5742251223491"
-                    Point3="-17.1666666666666,81.5742251223491" />
-                  <mssgle:LineSegment
-                    End="-17.1666666666666,123.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimAddress\Foodies997 Orders">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimAddress\Foodies997 Customers">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimAddress\ProjetETLBi Address">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DimCustomer">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="193,42"
-          Id="Package\DimCustomer\Foodies997 Customers"
-          TopLeft="342,91" />
-        <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\DimCustomer\ProjetETLBi Customer"
           TopLeft="344,270" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\DimCustomer\Foodies997 Customers"
+          TopLeft="342,91" />
         <EdgeLayout
           Id="Package\DimCustomer.Paths[Sortie de source OLE DB]"
           TopLeft="438.25,133">
@@ -6259,23 +5269,23 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="121,42"
+          Size="120.8,41.6"
           Id="Package\DimDate\Unir tout"
           TopLeft="383,302" />
         <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\DimDate\ProjetETLBi date"
           TopLeft="362,514" />
         <NodeLayout
-          Size="159,42"
+          Size="159.2,41.6"
           Id="Package\DimDate\Colonne dérivée"
           TopLeft="368,409" />
         <NodeLayout
-          Size="143,42"
+          Size="143.2,41.6"
           Id="Package\DimDate\Multidiffusion"
           TopLeft="373,185" />
         <NodeLayout
-          Size="171,42"
+          Size="171.2,41.6"
           Id="Package\DimDate\Foodies997 orders"
           TopLeft="353,93" />
         <EdgeLayout
@@ -6445,11 +5455,11 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\DimEployee\ProjetETLBi Employee"
           TopLeft="250,355" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\DimEployee\Foodies997 Employees"
           TopLeft="244,87" />
         <EdgeLayout
@@ -6509,15 +5519,19 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="183,42"
+          Size="183.2,41.6"
           Id="Package\DimProduct\Foddies997 Products"
           TopLeft="484,97" />
         <NodeLayout
-          Size="179,42"
+          Size="179.2,41.6"
           Id="Package\DimProduct\ProjetETLBi Product"
           TopLeft="485,410" />
         <NodeLayout
-          Size="177,42"
+          Size="185.6,41.6"
+          Id="Package\DimProduct\ErrorCategoryProduct"
+          TopLeft="860,207" />
+        <NodeLayout
+          Size="176.8,41.6"
           Id="Package\DimProduct\Find CategoryName"
           TopLeft="491,200" />
         <EdgeLayout
@@ -6542,34 +5556,6 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\DimProduct\ErrorCategoryProduct"
-          TopLeft="860,207" />
-        <EdgeLayout
-          Id="Package\DimProduct.Paths[Sortie d'erreur de recherche]"
-          TopLeft="668,224.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="192,0"
-              Start="0,0"
-              End="184.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="184.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="29.78298828125,5,124.9340234375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DimProduct.Paths[Sortie de recherche avec correspondance]"
           TopLeft="577,242">
@@ -6591,6 +5577,30 @@ where [refTable].[ProductID] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-91.67701171875,74.4453125,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimProduct.Paths[Sortie d'erreur de recherche]"
+          TopLeft="668,224.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="192,0"
+              Start="0,0"
+              End="184.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="184.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.78298828125,5,124.9340234375,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6652,11 +5662,11 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\DimShipper\Source OLE DB"
           TopLeft="381,107" />
         <NodeLayout
-          Size="225,42"
+          Size="224.8,41.6"
           Id="Package\DimShipper\Destination ProjetETLBI Adress"
           TopLeft="354.499972283841,304.80000336806" />
         <EdgeLayout
@@ -6716,77 +5726,57 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="173,42"
-          Id="Package\Tâche de flux de données\Recherche Product"
-          TopLeft="388,284" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Tâche de flux de données\Recherche Order"
-          TopLeft="393,181" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Tâche de flux de données\Source OLE DB"
-          TopLeft="396,63" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Tâche de flux de données\Error Order"
-          TopLeft="747,174" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Tâche de flux de données\Error Product"
-          TopLeft="738,290" />
-        <NodeLayout
-          Size="205,42"
+          Size="204.8,41.6"
           Id="Package\Tâche de flux de données\Convert Date To DateKey"
           TopLeft="370,411" />
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Tâche de flux de données\Destination OLE DB"
           TopLeft="375,607" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Tâche de flux de données\Recherche Order"
+          TopLeft="393,181" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Tâche de flux de données\Recherche Product"
+          TopLeft="388,284" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Tâche de flux de données\Error Product"
+          TopLeft="738,290" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Tâche de flux de données\Error Order"
+          TopLeft="747,174" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Tâche de flux de données\Calcul Price"
+          TopLeft="401,485" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Tâche de flux de données\Source OLE DB"
+          TopLeft="396,63" />
         <EdgeLayout
-          Id="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
-          TopLeft="474.5,105">
+          Id="Package\Tâche de flux de données.Paths[Sortie de colonne dérivée]"
+          TopLeft="471.25,453">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,68.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.5" />
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tâche de flux de données.Paths[Sortie de recherche avec correspondance]"
-          TopLeft="474.5,223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-91.67701171875,20.9453125,183.3540234375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6838,6 +5828,28 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
+          TopLeft="474.5,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Tâche de flux de données.Paths[Sortie de recherche avec correspondance1]"
           TopLeft="473.5,326">
           <EdgeLayout.Curve>
@@ -6861,30 +5873,28 @@ where [refTable].[ProductID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Tâche de flux de données\Calcul Price"
-          TopLeft="401,485" />
         <EdgeLayout
-          Id="Package\Tâche de flux de données.Paths[Sortie de colonne dérivée]"
-          TopLeft="471.25,453">
+          Id="Package\Tâche de flux de données.Paths[Sortie de recherche avec correspondance]"
+          TopLeft="474.5,223">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,24.5">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,20.9453125,183.3540234375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6913,25 +5923,15 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tâche de flux de données\Recherche Product">
+    design-time-name="Package\Tâche de flux de données\Destination OLE DB">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Products]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6959,20 +5959,30 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tâche de flux de données\Source OLE DB">
+    design-time-name="Package\Tâche de flux de données\Recherche Product">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Products]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tâche de flux de données\Destination OLE DB">
+    design-time-name="Package\Tâche de flux de données\Source OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

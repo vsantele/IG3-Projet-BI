@@ -13,11 +13,10 @@ CREATE TABLE [dbo].[FactOrder](
 	[ProductKey] [numeric](18, 0) NOT NULL,
 	[Price] [money] NOT NULL,
 	[Freight] [money] NOT NULL,
+	[Quantity] [smallint] NOT NULL,
 	[ShipperKey] [numeric](18, 0) NOT NULL,
-	[ShipAddressKey] [numeric](18, 0) NOT NULL,
 	[EmployeeKey] [numeric](18, 0) NOT NULL,
 	[CustomerKey] [nchar](5) NOT NULL,
-	[CustomerAddressKey] [numeric](18,0) NOT NULL,
 	[OrderDateKey] [numeric](18, 0) NOT NULL,
 	[RequiredDateKey] [numeric](18, 0) NOT NULL,
 	[ShippedDateKey] [numeric](18, 0) NOT NULL,
@@ -28,13 +27,6 @@ CREATE TABLE [dbo].[FactOrder](
 	[ProductKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[FactOrder]  WITH CHECK ADD  CONSTRAINT [FK_DimAddress_Ship] FOREIGN KEY([ShipAddressKey])
-REFERENCES [dbo].[DimAddress] ([Id])
-GO
-
-ALTER TABLE [dbo].[FactOrder] CHECK CONSTRAINT [FK_DimAddress_Ship]
 GO
 
 ALTER TABLE [dbo].[FactOrder]  WITH CHECK ADD  CONSTRAINT [FK_DimCustomer] FOREIGN KEY([CustomerKey])
@@ -86,9 +78,3 @@ GO
 ALTER TABLE [dbo].[FactOrder] CHECK CONSTRAINT [FK_DimShipper]
 GO
 
-ALTER TABLE [dbo].[FactOrder]  WITH CHECK ADD  CONSTRAINT [FK_DimCustomer_Ship] FOREIGN KEY([CustomerAddressKey])
-REFERENCES [dbo].[DimAddress] ([Id])
-GO
-
-ALTER TABLE [dbo].[FactOrder] CHECK CONSTRAINT [FK_DimAddress_Ship]
-GO

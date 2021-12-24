@@ -14,6 +14,11 @@ CREATE TABLE [dbo].[DimCustomer](
 	[ContactName] [nchar](30) NOT NULL,
 	[ContactTitle] [nchar](30) NOT NULL,
 	[Phone] [nchar](24) NOT NULL,
+	[City] [nchar](15) NOT NULL,
+	[PostalCode] [nchar](10) NOT NULL,
+	[Region] [nchar](15) NOT NULL,
+	[CountryNameFr] [nchar](15) NOT NULL,
+	[CountryNameEn] [nchar](15) NOT NULL,
  CONSTRAINT [PK_DimCustomer] PRIMARY KEY CLUSTERED
 (
 	[Id] ASC
