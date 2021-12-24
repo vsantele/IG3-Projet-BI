@@ -42,10 +42,10 @@ GO
 ALTER TABLE [dbo].[DimCustomer] ADD  CONSTRAINT [DF_DimCustomer_PostalCode]  DEFAULT (N'Unknown') FOR [PostalCode]
 GO
 
-ALTER TABLE [dbo].[DimCustomer] ADD  CONSTRAINT [DF_DimCustomer_CountryNameEN]  DEFAULT (N'Unknown') FOR [CountryNameEn]
+ALTER TABLE [dbo].[DimCustomer] ADD  CONSTRAINT [DF_DimCustomer_CountryNameEn]  DEFAULT (N'Unknown') FOR [CountryNameEn]
 GO
 
-ALTER TABLE [dbo].[DimCustomer] ADD  CONSTRAINT [DF_DimCustomer_CountryNameFR]  DEFAULT (N'Inconnu') FOR [CountryNameFr]
+ALTER TABLE [dbo].[DimCustomer] ADD  CONSTRAINT [DF_DimCustomer_CountryNameFr]  DEFAULT (N'Inconnu') FOR [CountryNameFr]
 GO
 
 CREATE TABLE [dbo].[DimDate](
